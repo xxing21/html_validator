@@ -28,8 +28,8 @@ def validate_html(html):
                 validate = False
             else:
                 left = s.pop()
-                if tags[i][2:] == left[1:]:
-                    validate = True
+                if not tags[i][2:] == left[1:]:
+                    validate = False
     if validate and s == []:
         return True
     else:

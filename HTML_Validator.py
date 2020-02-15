@@ -52,9 +52,6 @@ def _extract_tags(html):
     import re
     
     tags = re.findall(r'<[^>]+>', html)
-    
-    if len(tags) != 0:
-        return tags 
-    else:
-        raise ValueError
+    return tags 
+
 

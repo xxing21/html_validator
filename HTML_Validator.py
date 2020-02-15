@@ -52,12 +52,10 @@ def _extract_tags(html):
     import re
     
     tags = re.findall(r'<[^>]+>', html)
-    return tags
 
-# extra credit:
-#    if len(tags) != 0:
-#       return tags
-#   else:
-#       raise ValueError("found < without matching >")
+    if len(tags) != 0:
+       return tags
+    else:
+       raise ValueError("found < without matching >")
 
 

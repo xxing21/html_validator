@@ -20,23 +20,20 @@ def validate_html(html):
     validate = True
     tags =_extract_tags(html)
     s = []
-    if len(tags) == 0:
-        return True
-    else:
-        for i in range(len(tags)):
-            if "/" not in tags[i]:
-                s.append(tags[i])
-            else:
-                if s == []:
-                    validate = False
-                else:
-                    left = s.pop()
-                    if not tags[i][2:] == left[1:]:
-                        validate = False
-        if validate and s == []:
-            return True
+    for i in range(len(tags)):
+        if "/" not in tags[i]:
+            s.append(tags[i])
         else:
-            return False
+            if s == []:
+                validate = False
+            else:
+                left = s.pop()
+                if not tags[i][2:] == left[1:]:
+                    validate = False
+    if validate and s == []:
+        return True
+    else:   
+        return False
 
 
             

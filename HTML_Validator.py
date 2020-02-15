@@ -20,6 +20,8 @@ def validate_html(html):
     validate = True
     tags =_extract_tags(html)
     s = []
+    if len(tags) == 0:
+        return True
     for i in range(len(tags)):
         if "/" not in tags[i]:
             s.append(tags[i])

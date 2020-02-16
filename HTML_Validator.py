@@ -17,23 +17,27 @@ def validate_html(html):
     # the main difference between your code and the book's code will be that you will have to keep track of not just the 3 types of parentheses,
     # but arbitrary text located between the html tags
 
-    validate = True
-    tags =_extract_tags(html)
-    s = []
-    for i in range(len(tags)):
-        if "/" not in tags[i]:
-            s.append(tags[i])
-        else:
-            if s == []:
-                validate = False
-            else:
-                left = s.pop()
-                if not tags[i][2:] == left[1:]:
-                    validate = False
-    if validate and s == []:
-        return True
-    else:   
+    try:
+        tags =_extract_tags(html)    
+    except ValueError:
         return False
+    else:
+        s = []
+        validate = True
+        for i in range(len(tags)):
+            if "/" not in tags[i]:
+                s.append(tags[i])
+            else:
+                if s == []:
+                    validate = False
+                else:
+                    left = s.pop()
+                    if not tags[i][2:] == left[1:]:
+                        validate = False
+        if validate and s == []:
+            return True
+        else:   
+            return False
 
 
             
